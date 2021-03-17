@@ -16,7 +16,7 @@ const DogDetails = ({ dogs }) => {
       setDog(null);
       history.push("/dogs")
     }
-  }, [name]);
+  }, [name, dogs]);
 
   return (
     <>
