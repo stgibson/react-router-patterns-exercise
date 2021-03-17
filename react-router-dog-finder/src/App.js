@@ -9,6 +9,11 @@ import tubby from "./images/tubby.jpg";
 import whiskey from "./images/whiskey.jpg";
 import './App.css';
 
+/**
+ * Component that creates for routing for app and displays navigation bar
+ * @param {Object} { dogs }
+ * @returns JSX code to render routing and navigation bar
+ */
 function App({ dogs }) {
   return (
     <div className="App">

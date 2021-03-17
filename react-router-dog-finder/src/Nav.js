@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
 
+/**
+ * Component that creates navigation bar
+ * @returns JSX code to render nav bar
+ */
 const Nav = () => {
   return (
     <div className="Nav">
