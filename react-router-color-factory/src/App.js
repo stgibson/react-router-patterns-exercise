@@ -11,11 +11,7 @@ import './App.css';
  * @return JSX code to render routing and navigation bar
  */
 function App() {
-  const [colors, setColors] =
-    useState([
-      { id: uuid(), name: "green", color: "green" },
-      { id: uuid(), name: "red", color: "red" }
-    ]);
+  const [colors, setColors] = useState([]);
 
   /**
    * Adds color to colors
