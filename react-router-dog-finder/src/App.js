@@ -36,7 +36,8 @@ function App({ dogs }) {
         </Route>
         <Route path="/dogs/:name">
           {
-            currDog ? <DogDetails dog={ currDog } /> : <DogDetails dogs={ dogs } />
+            currDog ? <DogDetails dog={ currDog } /> :
+              <DogDetails dogs={ dogs } />
           }
         </Route>
         <Redirect to="/dogs" />
