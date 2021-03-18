@@ -4,15 +4,24 @@ import "./Nav.css";
 
 /**
  * Component that creates navigation bar
+ * @param {Object} { updateCurrDog }
  * @returns JSX code to render nav bar
  */
-const Nav = () => {
+const Nav = ({ updateCurrDog }) => {
   return (
     <div className="Nav">
-      <Link to="/dogs/duke">Duke</Link>
-      <Link to="/dogs/perry">Perry</Link>
-      <Link to="/dogs/tubby">Tubby</Link>
-      <Link to="/dogs/whiskey">Whiskey</Link>
+      <Link to="/dogs/duke">
+        <span onClick={ () => updateCurrDog("duke") }>Duke</span>
+      </Link>
+      <Link to="/dogs/perry">
+        <span onClick={ () => updateCurrDog("perry") }>Perry</span>
+      </Link>
+      <Link to="/dogs/tubby">
+        <span onClick={ () => updateCurrDog("tubby") }>Tubby</span>
+      </Link>
+      <Link to="/dogs/whiskey">
+        <span onClick={ () => updateCurrDog("whiskey") }>Whiskey</span>
+      </Link>
       <Link to="/dogs">Home</Link>
     </div>
   );

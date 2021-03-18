@@ -4,38 +4,44 @@ import { v4 as uuid } from "uuid";
 
 /**
  * Component to show details of a dog based on url parameter
- * @param {Object} { dogs }
+ * @param {Object} { dog, dogs }
  * @returns JSX code to render details of a dog
  */
-const DogDetails = ({ dogs }) => {
+const DogDetails = ({ dog, dogs }) => {
   let { name } = useParams();
-  const [dog, setDog] = useState(null);
   const history = useHistory();
+  const [currDog, setCurrDog] = useState(null);
 
+  // if dog passed, set currDog to dog, otherwise find in dogs
   useEffect(() => {
-    const currDog =
-      dogs.find(dog => dog.name.toLowerCase() === name.toLowerCase());
-    if (currDog) {
-      setDog(currDog);
+    if (dog) {
+      setCurrDog(dog);
     }
     else {
-      setDog(null);
-      history.push("/dogs")
+      const foundDog =
+        dogs.find(dog => dog.name.toLowerCase() === name.toLowerCase());
+      if (foundDog) {
+        setCurrDog(foundDog);
+      }
+      else {
+        setCurrDog(null);
+        history.push("/dogs");
+      }
     }
   }, [name, dogs]);
 
   return (
     <>
       {
-        dog ? 
+        currDog ? 
         <div>
           <h1>{ name }</h1>
-          <p>Age: { dog.age }</p>
+          <p>Age: { currDog.age }</p>
           <p>Facts:</p>
           <ul>
-            { dog.facts.map(fact => <li key={ uuid() }>{ fact }</li>)}
+            { currDog.facts.map(fact => <li key={ uuid() }>{ fact }</li>)}
           </ul>
-          <img src={ dog.src } alt={ name } />
+          <img src={ currDog.src } alt={ name } />
         </div> : null
       }
     </>

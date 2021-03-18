@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Nav from "./Nav";
 import DogList from "./DogList";
@@ -15,15 +15,29 @@ import './App.css';
  * @returns JSX code to render routing and navigation bar
  */
 function App({ dogs }) {
+  const [currDog, setCurrDog] = useState(null);
+
+  /**
+   * Sets currDog based on which link the user clicked
+   * @param {string} name
+   */
+  const updateCurrDog = name => {
+    console.log(`name: ${name}`);
+    const dog = dogs.find(dog => dog.name.toLowerCase() === name);
+    setCurrDog(dog);
+  };
+
   return (
     <div className="App">
-      <Nav />
+      <Nav updateCurrDog={ updateCurrDog } />
       <Switch>
         <Route exact path="/dogs">
           <DogList dogs={ dogs } />
         </Route>
         <Route path="/dogs/:name">
-          <DogDetails dogs={ dogs } />
+          {
+            currDog ? <DogDetails dog={ currDog } /> : <DogDetails dogs={ dogs } />
+          }
         </Route>
         <Redirect to="/dogs" />
       </Switch>
