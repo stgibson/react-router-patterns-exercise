@@ -1,0 +1,10 @@
+/* Reviewed how to set div width and height to that of browser at https://stackoverflow.com/questions/24808661/make-div-100-width-of-browser-window */
+.Color {
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+}
+
+.Color a {
+  color: black;
+}
